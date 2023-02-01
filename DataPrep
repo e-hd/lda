@@ -1,0 +1,72 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOFfaljQ8FDhTigU4oxpIfO",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/e-hd/lda/blob/main/DataPrep\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 11,
+      "metadata": {
+        "id": "P4qQsOezmz0j"
+      },
+      "outputs": [],
+      "source": [
+        "import requests \n",
+        "from bs4 import BeautifulSoup \n",
+        "url = 'https://www.nist.gov/publications/search?k=ethics%2C+issues%2C++bias%2C+standards%2C+evolutions%2CGuidelines+and+Best+Practices%3A++facial+recognition+technology+&t=&a=&ps=All&n=&d%5Bmin%5D=&d%5Bmax%5D='\n",
+        "\n",
+        "response = requests.get(url)\n",
+        "\n",
+        "soup = BeautifulSoup(response.content, 'html.parser')\n",
+        "\n",
+        "import pandas as pd\n",
+        "\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "df = pd.DataFrame({'abstract': abstracts})\n",
+        "df['abstract'] = df['abstract'].astype(str)\n",
+        "search_terms = ['facial', 'recognition', 'biometrics', 'face', 'detection', 'algorithms', 'issues', 'bias', 'concern', 'application', 'fairness', 'privacy', 'transparency', 'reliability', 'security', 'human rights', 'ethics', 'evaluation', 'principles', 'integrity', 'theft', 'identity', 'discrimination', 'racism', 'misuse', 'hacking', 'security', 'breaching']\n",
+        "\n",
+        "def abstract_contains_search_terms(abstract):\n",
+        "    for term in search_terms:\n",
+        "        if term in abstract.lower():\n",
+        "            return True\n",
+        "    return False\n",
+        "\n",
+        "filtered_abstracts = [abstract for abstract in abstracts if abstract_contains_search_terms(abstract)]\n"
+      ],
+      "metadata": {
+        "id": "QEYbZqOonoPE"
+      },
+      "execution_count": 12,
+      "outputs": []
+    }
+  ]
+}
